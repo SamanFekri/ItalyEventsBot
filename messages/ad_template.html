@@ -1,0 +1,40 @@
+{{adstat stat}}
+{{cat_emoji ad.cat}} {{hashtag ad.cat}}
+
+{{#if ad.title}}
+❇️ عنوان: {{ad.title}}
+    
+{{/if}}
+{{#if ad.is_english_event}}
+🔤 #رخداد_انگلیسی_زبان
+
+{{/if}}
+{{#if ad.region}}
+🔍 محدوده: {{hashtag ad.region}}
+    
+{{/if}}
+{{#if ad.address}}
+📍 آدرس: {{ad.address}}
+    
+{{/if}}
+{{#if ad.time}}
+📅 تاریخ: {{ad.time}}
+    
+{{/if}}
+{{#if ad.price}}
+💰 قیمت: {{currency ad.price}} 
+    
+{{/if}}
+{{#if ad.detail}}
+🔹 توضیحات:
+{{ad.detail}}
+    
+{{/if}}
+{{#if ad.ticket}}
+🎟️ نحوه تهیه بلیط:
+{{ad.ticket}}
+    
+{{/if}}
+👤 تماس با <a href="tg://user?id={{user.id}}">آگهی دهنده</a>
+
+🤖 @italymarketbot 🆔 @ITALYMARKETT
