@@ -176,7 +176,7 @@ function getFeatures(ad, user, stat = 0) {
             is_english_event: ad.is_english_event,
             address: ad.address,
             ticket: ad.ticket,
-            isPlanenr: ad.isPlanenr,
+            isPlanenr: ad.is_planner,
         },
         user: {
             id: user.id,

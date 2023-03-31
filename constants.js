@@ -242,12 +242,12 @@ const PUBLISH_KEYBOARD = [
 
 const ADMIN_KEYBOARD = [
     {
-        ad_channel: '📢 آگهی ها',
         reject: '❌ لغو',
-    },
-    {
         publish: '✅ ارسال',
-    }
+    },
+    // {
+    //     // ad_channel: '📢 آگهی ها',
+    // }
 ];
 
 
