@@ -629,9 +629,9 @@ bot.on('callback_query', async (ctx) => {
             break;
 
         case 'sel_planner':
-            ctx.ad.planner = parts[1] == 'yes';
+            ctx.ad.is_planner = parts[1] == 'yes';
             await ctx.ad.save();
-            await editCard(ctx, msgs['sel_planner']({isPlanenr: ctx.ad.planner}));
+            await editCard(ctx, msgs['sel_planner']({isPlanenr: ctx.ad.is_planner}));
             askNext(ctx);
             break;
         
