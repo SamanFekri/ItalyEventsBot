@@ -34,6 +34,7 @@ const AD = mongoose.model('Ad', {
     region: String,
     detail: String,
     pic: String,
+    is_planner: Boolean,
 
     owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     owner_tg_id: Number,

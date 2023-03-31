@@ -19,6 +19,7 @@ const AD_STATUS = {
     ASK_PRICE: 'ask_price',
     ASK_DETAIL: 'ask_detail',
     ASK_PIC: 'ask_pic',
+    ASK_IS_PLANNER: 'ask_is_planner',
     ASK_CONFIRM: 'ask_confirm',
 
     COMPLETE: 'complete',
@@ -28,7 +29,7 @@ const AD_STATUS = {
     CANCELED: 'canceled',
 };
 
-const process = [AD_STATUS.INIT, AD_STATUS.ASK_TITLE, AD_STATUS.ASK_REGION, AD_STATUS.ASK_PRICE, AD_STATUS.ASK_ADDRESS, AD_STATUS.ASK_MONTH, AD_STATUS.ASK_DAY, AD_STATUS.ASK_TICKET, AD_STATUS.ASK_DETAIL, AD_STATUS.ASK_PIC, AD_STATUS.ASK_CONFIRM];
+const process = [AD_STATUS.INIT, AD_STATUS.ASK_TITLE, AD_STATUS.ASK_REGION, AD_STATUS.ASK_PRICE, AD_STATUS.ASK_ADDRESS, AD_STATUS.ASK_MONTH, AD_STATUS.ASK_DAY, AD_STATUS.ASK_TICKET, AD_STATUS.ASK_DETAIL, AD_STATUS.ASK_PIC,  AD_STATUS.ASK_IS_PLANNER, AD_STATUS.ASK_CONFIRM];
 const AD_CAT = {
     a_concert: {
         icon: '🎤',
@@ -220,6 +221,13 @@ const START_KEYBOARD = [
     }
 ];
 
+const YES_NO_KEYBOARD = [
+    {
+        yes: 'بله',
+        no: 'خیر',
+    }
+];
+
 const ACCEPT_RULES_KEYBOARD = [
     {
         accept_rules: '✅ قوانین کانال را می‌پذیرم',
@@ -267,5 +275,6 @@ module.exports = {
     MONTH_KEYBOARD,
     DAY_KEYBOARD,
     REGION_KEYBOARD,
-    ENGLISH_EVENT_KEYBOARD
+    ENGLISH_EVENT_KEYBOARD,
+    YES_NO_KEYBOARD,
  };

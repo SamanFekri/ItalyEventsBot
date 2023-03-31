@@ -19,6 +19,7 @@ const {
     DAY_KEYBOARD,
     REGION_KEYBOARD,
     ENGLISH_EVENT_KEYBOARD,
+    YES_NO_KEYBOARD,
  } = require('./constants.js');
 const fs = require('fs');
 const Handlebars = require('handlebars')
@@ -175,6 +176,7 @@ function getFeatures(ad, user, stat = 0) {
             is_english_event: ad.is_english_event,
             address: ad.address,
             ticket: ad.ticket,
+            isPlanenr: ad.isPlanenr,
         },
         user: {
             id: user.id,
@@ -401,6 +403,11 @@ function askNext(ctx) {
             msg = msgs['ask_pic']();
             ikey = new IKeyboard(NO_PIC_KEYBOARD, 'sel_pic', ctx.ad._id).generate();
             break;
+
+        case AD_STATUS.ASK_IS_PLANNER:
+            msg = msgs['ask_planner']();
+            ikey = new IKeyboard(YES_NO_KEYBOARD, 'sel_planner', ctx.ad._id).generate();
+            break;
         
         case AD_STATUS.ASK_CONFIRM:
             msg = msgs['ad_template'](getFeatures(ctx.ad, ctx.user));
@@ -620,6 +627,13 @@ bot.on('callback_query', async (ctx) => {
             await editCard(ctx, msgs['sel_price']());
             askNext(ctx);
             break;
+
+        case 'sel_planner':
+            ctx.ad.planner = parts[1] == 'yes';
+            await ctx.ad.save();
+            await editCard(ctx, msgs['sel_planner']({isPlanenr: ctx.ad.planner}));
+            askNext(ctx);
+            break;
         
         case 'sel_confirm':
             let msg = msgs['ad_template'](getFeatures(ctx.ad, ctx.user));
@@ -641,6 +655,8 @@ bot.on('callback_query', async (ctx) => {
             // send message to user that admin will check the ad and after that publish it
             sendCard(ctx, ctx.user.id, msgs['ad_pending']({code: ctx.ad._id}), null, null, null);
             break;
+
+
     }
     
 });
