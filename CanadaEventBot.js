@@ -51,12 +51,12 @@ Handlebars.registerHelper('adstat', function(stat) {
     }
 });
 
-Handlebars.registerHelper('currency', function(price) {
-    if (price <= 0) {
-        return 'رایگان';
-    }
-    return `${price} دلار`;
-});
+// Handlebars.registerHelper('currency', function(price) {
+//     if (price <= 0) {
+//         return 'رایگان';
+//     }
+//     return `${price} دلار`;
+// });
 
 Handlebars.registerHelper('cat_emoji', function(cat) {
     try {
@@ -622,7 +622,7 @@ bot.on('callback_query', async (ctx) => {
             break;
 
         case 'sel_price':
-            ctx.ad.price = -1;
+            ctx.ad.price = parts[1];
             await ctx.ad.save();
             await editCard(ctx, msgs['sel_price']());
             askNext(ctx);
@@ -756,11 +756,6 @@ bot.on('text', async (ctx) => {
             break;
         
         case AD_STATUS.ASK_PRICE:
-            text = fn.convertDigits(text);
-            if(isNaN(text)) {
-                sendCard(ctx, ctx.user.id, msgs['invalid_price'](), null, null, null);
-                return
-            }
             ctx.ad.price = text;
             break;
 

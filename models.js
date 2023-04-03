@@ -24,7 +24,7 @@ const AD = mongoose.model('Ad', {
     _id: mongoose.Schema.Types.ObjectId,
 
     cat: String,
-    price: Number,
+    price: String,
     title: String,
     is_english_event: Boolean,
     address: String,
