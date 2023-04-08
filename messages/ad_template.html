@@ -27,7 +27,15 @@
 {{/if}}
 {{#if ad.address}}
 📍 آدرس: 
-{{ad.address}}
+{{#if isLink ad.address}}
+{{ad.adress}}
+{{else}}
+<code>{{ad.address}}</code>
+{{/if}}
+    
+{{/if}}
+{{#if ad.link}}
+{{/if}}
     
 {{/if}}
 {{#if ad.detail}}

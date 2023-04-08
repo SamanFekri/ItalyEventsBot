@@ -52,6 +52,12 @@ Handlebars.registerHelper('adstat', function(stat) {
     }
 });
 
+Handlebars.registerHelper('isLink', function(str) {
+    if(str.startsWith('http')) {
+        return true;
+    }
+    return false;
+});
 // Handlebars.registerHelper('currency', function(price) {
 //     if (price <= 0) {
 //         return 'رایگان';
@@ -761,7 +767,7 @@ bot.on('text', async (ctx) => {
             break;
         
         case AD_STATUS.ASK_ADDRESS:
-            ctx.ad.address = `<code>${text}</code>`;
+            ctx.ad.address = text;
             break;
         
         case AD_STATUS.ASK_HOUR:
