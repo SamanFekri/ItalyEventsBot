@@ -761,7 +761,7 @@ bot.on('text', async (ctx) => {
             break;
         
         case AD_STATUS.ASK_ADDRESS:
-            ctx.ad.address = text;
+            ctx.ad.address = `<code>${text}</code>`;
             break;
         
         case AD_STATUS.ASK_HOUR:
