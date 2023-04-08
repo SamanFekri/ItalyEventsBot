@@ -636,7 +636,7 @@ bot.on('callback_query', async (ctx) => {
             break;
 
         case 'sel_price':
-            ctx.ad.price = parts[1];
+            ctx.ad.price = 'رایگان';
             await ctx.ad.save();
             await editCard(ctx, msgs['sel_price']());
             askNext(ctx);
