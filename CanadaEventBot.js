@@ -176,6 +176,7 @@ function getFeatures(ad, user, stat = 0) {
             time: ad.month ? `${ad.day} ${findFromKeyboard(ad.month, MONTH_KEYBOARD)}` : null,
             is_english_event: ad.is_english_event,
             address: ad.address,
+            hour: ad.hour,
             ticket: ad.ticket,
             isPlanner: ad.is_planner,
         },
@@ -793,7 +794,6 @@ bot.on('text', async (ctx) => {
 });
 
 bot.on('location', async (ctx) => {
-    console.log(ctx.message);
     if (ctx.user.status == USER_STATUS.NEW) {
         let rule_key = new IKeyboard(ACCEPT_RULES_KEYBOARD, 'sys').generate();
         await sendCard(ctx, ctx.user.id, msgs['sys_rule'](), null, rule_key, null);
@@ -803,10 +803,13 @@ bot.on('location', async (ctx) => {
         // No ad to ad fields
         return
     }
-    if (!(ctx.ad && ctx.ad.status == AD_STATUS.ASK_LOCATION)) {
-        
+    if (!(ctx.ad && ctx.ad.status != AD_STATUS.ASK_ADDRESS)) {
         return
     }
+    ctx.ad.address = `https://www.google.com/maps/search/?api=1&query=${ctx.message.location.latitude},${ctx.message.location.longitude}`;
+    await ctx.ad.save();
+    // next question
+    askNext(ctx);
 });
 
 mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true}).catch((err) => {
