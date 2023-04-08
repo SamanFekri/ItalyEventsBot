@@ -16,6 +16,7 @@ const AD_STATUS = {
     ASK_REGION: 'ask_region',
     ASK_MONTH: 'ask_month',
     ASK_DAY: 'ask_day',
+    ASK_HOUR: 'ask_hour',
     ASK_PRICE: 'ask_price',
     ASK_DETAIL: 'ask_detail',
     ASK_PIC: 'ask_pic',
@@ -29,7 +30,7 @@ const AD_STATUS = {
     CANCELED: 'canceled',
 };
 
-const process = [AD_STATUS.INIT, AD_STATUS.ASK_TITLE, AD_STATUS.ASK_REGION, AD_STATUS.ASK_PRICE, AD_STATUS.ASK_ADDRESS, AD_STATUS.ASK_MONTH, AD_STATUS.ASK_DAY, AD_STATUS.ASK_TICKET, AD_STATUS.ASK_DETAIL, AD_STATUS.ASK_PIC,  AD_STATUS.ASK_IS_PLANNER, AD_STATUS.ASK_CONFIRM];
+const process = [AD_STATUS.INIT, AD_STATUS.ASK_TITLE, AD_STATUS.ASK_REGION, AD_STATUS.ASK_PRICE, AD_STATUS.ASK_ADDRESS, AD_STATUS.ASK_MONTH, AD_STATUS.ASK_DAY, AD_STATUS.ASK_HOUR, AD_STATUS.ASK_TICKET, AD_STATUS.ASK_DETAIL, AD_STATUS.ASK_PIC,  AD_STATUS.ASK_IS_PLANNER, AD_STATUS.ASK_CONFIRM];
 const AD_CAT = {
     a_concert: {
         icon: '🎤',
@@ -215,6 +216,12 @@ const FREE_PRICE_KEYBOARD = [
     }
 ];
 
+const FULL_DAY_KEYBOARD = [
+    {
+        full_day: 'تمام روز',
+    }
+];
+
 const START_KEYBOARD = [
     {
         start: BUTTONS.NEW_AD,
@@ -277,4 +284,5 @@ module.exports = {
     REGION_KEYBOARD,
     ENGLISH_EVENT_KEYBOARD,
     YES_NO_KEYBOARD,
+    FULL_DAY_KEYBOARD,
  };

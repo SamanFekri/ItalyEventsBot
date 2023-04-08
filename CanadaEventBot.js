@@ -20,6 +20,7 @@ const {
     REGION_KEYBOARD,
     ENGLISH_EVENT_KEYBOARD,
     YES_NO_KEYBOARD,
+    FULL_DAY_KEYBOARD,
  } = require('./constants.js');
 const fs = require('fs');
 const Handlebars = require('handlebars')
@@ -384,6 +385,11 @@ function askNext(ctx) {
             ikey = new IKeyboard(DAY_KEYBOARD(month), 'sel_day', ctx.ad._id).generate();
             editCard(ctx, msg, null, ikey, null);
             return;
+
+        case AD_STATUS.ASK_HOUR:
+            msg = msgs['ask_hour']();
+            ikey = new IKeyboard(FULL_DAY_KEYBOARD, 'sel_hour', ctx.ad._id).generate();
+            break;
         
         case AD_STATUS.ASK_PRICE:
             msg = msgs['ask_price']();
@@ -606,6 +612,13 @@ bot.on('callback_query', async (ctx) => {
             askNext(ctx);
             }
             break;
+
+        case 'sel_hour':
+            ctx.ad.hour = null;
+            await ctx.ad.save();
+            await editCard(ctx, msgs['sel_hour']());
+            askNext(ctx);
+            break;
         
         case 'sel_detail':
             ctx.ad.detail = null;
@@ -655,7 +668,6 @@ bot.on('callback_query', async (ctx) => {
             // send message to user that admin will check the ad and after that publish it
             sendCard(ctx, ctx.user.id, msgs['ad_pending']({code: ctx.ad._id}), null, null, null);
             break;
-
 
     }
     
@@ -751,6 +763,10 @@ bot.on('text', async (ctx) => {
             ctx.ad.address = text;
             break;
         
+        case AD_STATUS.ASK_HOUR:
+            ctx.ad.hour = text;
+            break;
+        
         case AD_STATUS.ASK_DETAIL:
             ctx.ad.detail = text;
             break;
@@ -773,6 +789,23 @@ bot.on('text', async (ctx) => {
 
         // go to the next question
         askNext(ctx);
+    }
+});
+
+bot.on('location', async (ctx) => {
+    console.log(ctx.message);
+    if (ctx.user.status == USER_STATUS.NEW) {
+        let rule_key = new IKeyboard(ACCEPT_RULES_KEYBOARD, 'sys').generate();
+        await sendCard(ctx, ctx.user.id, msgs['sys_rule'](), null, rule_key, null);
+        return
+    }
+    if (!ctx.user.last_ad) {
+        // No ad to ad fields
+        return
+    }
+    if (!(ctx.ad && ctx.ad.status == AD_STATUS.ASK_LOCATION)) {
+        
+        return
     }
 });
 
