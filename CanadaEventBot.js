@@ -803,7 +803,7 @@ bot.on('location', async (ctx) => {
         // No ad to ad fields
         return
     }
-    if (!(ctx.ad && ctx.ad.status != AD_STATUS.ASK_ADDRESS)) {
+    if (!(ctx.ad && ctx.ad.status == AD_STATUS.ASK_ADDRESS)) {
         return
     }
     ctx.ad.address = `https://www.google.com/maps/search/?api=1&query=${ctx.message.location.latitude},${ctx.message.location.longitude}`;
