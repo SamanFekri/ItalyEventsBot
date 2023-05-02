@@ -124,20 +124,34 @@ const ALL_CAT_KEYBOARD = [
 ];
 const REGION_KEYBOARD = [
     {
-        west_vancouver: 'وست ونکوور',
-        north_vancouver: 'نورث ونکوور',
-        vancouver: 'ونکوور',
+        rome: 'رم',
+        milan: 'میلان',
+    }, 
+    {
+        torin: 'تورین',
+        lecco: 'لکو',
+        como: 'کومو',
     },
     {
-        coquitlam: 'کوکیتلام',
-        burnaby: 'برنابی',
-        richmond: 'ریچموند',
+        pavia: 'پاویا',
+        piacensa: 'پیاچنزا',
+        padova: 'پادوا',
+    }, 
+    {
+        veniece: 'ونیز',
+        pisa: 'پیزا',
+        naples: 'ناپلی',
     },
     {
-        langley: 'لنگلی',
-        delta: 'دلتا',
-        surrey: 'سوری',
-    }
+        felorence: 'فلورنس',
+        bolognia: 'بولونیا',
+        genova: 'جنوا',
+    },
+    {
+        other: 'سایر',
+        bolzano: 'بولزانو',
+        siena: 'سیه‌نا',
+    },
 ]
 const MONTH_KEYBOARD = [
     {
