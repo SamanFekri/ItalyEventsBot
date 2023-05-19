@@ -94,6 +94,13 @@ const AD_CAT = {
         text: 'بازی',
         code: 'a_game',
         steps: process
+    },
+    a_food: {
+        icon: '🍝',
+        display: '🍝 غذا',
+        text: 'غذا',
+        code: 'a_food',
+        steps: process
     }
 }; 
 
