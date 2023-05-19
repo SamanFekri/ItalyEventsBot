@@ -127,6 +127,9 @@ const ALL_CAT_KEYBOARD = [
         a_theater: AD_CAT.a_theater.display,
         a_game: AD_CAT.a_game.display,
         a_workshop: AD_CAT.a_workshop.display,
+    },
+    {
+        a_food: AD_CAT.a_food.display,
     }
 ];
 const REGION_KEYBOARD = [
